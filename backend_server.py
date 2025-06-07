@@ -14,7 +14,7 @@ app = FastAPI(title="Friendly Whisper Backend", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5174", "http://localhost:3000"],
+    allow_origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -30,28 +30,29 @@ ROOMS_DATA = {
 }
 
 PATIENT_CONTEXT = {
-    "patient": {
-        "name": "Sarah Johnson",
-        "age": 67,
-        "mrn": "MRN-789456",
-        "room": "101",
-        "admission_date": "2024-01-15"
-    },
-    "condition": {
-        "primary_diagnosis": "Acute Myocardial Infarction",
-        "severity": "High",
-        "status": "Stable but requires monitoring"
-    },
-    "alerts": [
-        {"type": "medication", "message": "Due for cardiac medication in 30 minutes", "priority": "high"},
-        {"type": "vitals", "message": "Blood pressure trending upward", "priority": "medium"}
-    ],
-    "recent_vitals": {
-        "heart_rate": "78 bpm",
-        "blood_pressure": "145/92 mmHg",
-        "temperature": "98.6°F",
-        "oxygen_saturation": "96%"
-    }
+    "room_id": "room-101",
+    "patient_name": "Sarah Johnson",
+    "age": 67,
+    "conditions": ["Acute Myocardial Infarction", "Hypertension", "Type 2 Diabetes"],
+    "allergies": ["Penicillin", "Shellfish"],
+    "recent_notes": "Patient responded well to cardiac intervention. Vitals stable but requires continued monitoring. Family has been notified of condition.",
+    "family_updates": "Daughter called at 2:30 PM. Updated on current status and treatment plan. Requesting to visit during evening hours.",
+    "ai_summary": "67-year-old female with acute MI, currently stable post-intervention. Risk factors include diabetes and hypertension. Recommend continued cardiac monitoring and medication compliance.",
+    "risk_score": 7.2,
+    "predictive_alerts": [
+        {
+            "type": "medication",
+            "message": "Due for cardiac medication in 30 minutes",
+            "priority": "high",
+            "timestamp": "2024-01-15T14:30:00Z"
+        },
+        {
+            "type": "vitals",
+            "message": "Blood pressure trending upward",
+            "priority": "medium",
+            "timestamp": "2024-01-15T14:15:00Z"
+        }
+    ]
 }
 
 def get_ai_analytics_data(room_id: str) -> Dict[str, Any]:
