@@ -117,6 +117,110 @@ async def trigger_context(request: dict):
 async def get_ai_analytics(room_id: str):
     return get_ai_analytics_data(room_id)
 
+@app.get("/vision-analytics/{room_id}")
+async def get_vision_analytics(room_id: str):
+    return {
+        "fall_detection": {
+            "risk_level": "low",
+            "confidence": 0.92,
+            "last_incident": "None in past 24 hours",
+            "camera_feeds": ["Camera-01", "Camera-02"]
+        },
+        "bed_exit_monitoring": {
+            "status": "patient_in_bed",
+            "alerts_today": 0,
+            "last_movement": "2 hours ago"
+        },
+        "hand_hygiene_compliance": {
+            "compliance_rate": 94,
+            "violations_today": 2,
+            "staff_compliance": [
+                {"staff_id": "nurse_001", "compliance": 98},
+                {"staff_id": "nurse_002", "compliance": 89}
+            ]
+        }
+    }
+
+@app.get("/nlp-analytics/{room_id}")
+async def get_nlp_analytics(room_id: str):
+    return {
+        "clinical_documentation": {
+            "auto_generated_notes": 12,
+            "transcription_accuracy": 94,
+            "time_saved_minutes": 45
+        },
+        "medication_screening": {
+            "interactions_detected": 1,
+            "alerts_generated": 3,
+            "safety_score": 96
+        },
+        "voice_commands_processed": 28,
+        "medical_terminology_accuracy": 91
+    }
+
+@app.get("/staff-analytics/{unit_id}")
+async def get_staff_analytics(unit_id: str):
+    return {
+        "workload_prediction": {
+            "current_capacity": 85,
+            "predicted_demand": 92,
+            "staffing_recommendation": "Add 1 nurse for evening shift",
+            "efficiency_score": 78
+        },
+        "burnout_indicators": {
+            "stress_level": "moderate",
+            "workload_score": 7.2,
+            "break_compliance": 78,
+            "overtime_hours": 12
+        },
+        "skill_matching": {
+            "optimal_assignments": 6,
+            "efficiency_improvement": 15,
+            "training_recommendations": ["ICU certification", "Pediatric care"]
+        }
+    }
+
+@app.get("/family-portal/{patient_id}")
+async def get_family_portal(patient_id: str):
+    return {
+        "family_contacts": [
+            {
+                "name": "Jennifer Johnson",
+                "relationship": "Daughter",
+                "phone": "+1-555-0123",
+                "preferred_contact_method": "text",
+                "update_frequency": "twice_daily"
+            }
+        ],
+        "communication_log": [
+            {
+                "timestamp": "2024-01-15T14:30:00Z",
+                "type": "automated_update",
+                "content": "Patient vitals stable, responding well to treatment",
+                "delivery_method": "SMS",
+                "read_status": "delivered"
+            }
+        ],
+        "emotional_analysis": {
+            "family_sentiment": "concerned_but_optimistic",
+            "key_concerns": ["recovery_timeline", "visiting_hours"],
+            "recommended_communication_tone": "reassuring_with_details"
+        },
+        "scheduled_updates": [
+            {"time": "08:00", "type": "morning_report"},
+            {"time": "20:00", "type": "evening_summary"}
+        ]
+    }
+
+@app.post("/send-family-update")
+async def send_family_update(update_data: dict):
+    return {
+        "status": "sent",
+        "delivery_confirmation": True,
+        "delivery_time": "2024-01-15T15:45:00Z",
+        "method": "SMS"
+    }
+
 if __name__ == "__main__":
     print("Starting Friendly Whisper Backend Server...")
     print("API Documentation: http://localhost:8000/docs")

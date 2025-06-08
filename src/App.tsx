@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
-import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, Zap, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu } from 'lucide-react'
+import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, Zap, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu, Users } from 'lucide-react'
 import './App.css'
 
 interface PatientContext {
@@ -16,6 +16,20 @@ interface PatientContext {
   allergies: string[]
   recent_notes: string
   family_updates: string
+  family_contacts: Array<{
+    name: string
+    relationship: string
+    phone: string
+    preferred_contact_method: string
+    update_frequency: string
+  }>
+  communication_log: Array<{
+    timestamp: string
+    type: string
+    content: string
+    delivery_method: string
+    read_status: string
+  }>
   ai_summary: string
   risk_score: number
   predictive_alerts: Array<{
@@ -69,6 +83,10 @@ function App() {
   const [showTechnicalView, setShowTechnicalView] = useState(false)
   const [aiAnalytics, setAiAnalytics] = useState<any>(null)
   const [showAIFeatures, setShowAIFeatures] = useState(false)
+  const [visionAnalytics, setVisionAnalytics] = useState<any>(null)
+  const [nlpAnalytics, setNlpAnalytics] = useState<any>(null)
+  const [staffAnalytics, setStaffAnalytics] = useState<any>(null)
+  const [familyPortal, setFamilyPortal] = useState<any>(null)
 
 
   const API_BASE_URL = 'http://localhost:8000'
@@ -137,6 +155,22 @@ function App() {
       const analytics = await analyticsResponse.json()
       setAiAnalytics(analytics)
       
+      const visionResponse = await fetch(`${API_BASE_URL}/vision-analytics/${selectedRoom}`)
+      const visionData = await visionResponse.json()
+      setVisionAnalytics(visionData)
+      
+      const nlpResponse = await fetch(`${API_BASE_URL}/nlp-analytics/${selectedRoom}`)
+      const nlpData = await nlpResponse.json()
+      setNlpAnalytics(nlpData)
+      
+      const staffResponse = await fetch(`${API_BASE_URL}/staff-analytics/icu-unit`)
+      const staffData = await staffResponse.json()
+      setStaffAnalytics(staffData)
+      
+      const familyResponse = await fetch(`${API_BASE_URL}/family-portal/${selectedRoom}`)
+      const familyData = await familyResponse.json()
+      setFamilyPortal(familyData)
+      
       setTimeout(() => {
         setPatientContext(context)
         setShowAIFeatures(true)
@@ -174,6 +208,8 @@ function App() {
       setIsPlaying(false)
     }
   }
+
+
 
   const CiscoNetworkDiagram = () => (
     <div className="relative bg-gradient-to-br from-gray-900 to-blue-900 p-6 rounded-lg text-white">
@@ -611,11 +647,12 @@ function App() {
         </div>
 
         <Tabs defaultValue="demo" className="mb-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="demo">Live Demo</TabsTrigger>
             <TabsTrigger value="architecture">Network Architecture</TabsTrigger>
             <TabsTrigger value="integration">Cisco Integration</TabsTrigger>
             <TabsTrigger value="ai-analytics">AI Analytics</TabsTrigger>
+            <TabsTrigger value="family-portal">Family Portal</TabsTrigger>
           </TabsList>
           
           <TabsContent value="demo" className="space-y-6">
@@ -1175,6 +1212,153 @@ function App() {
                   </div>
                 </CardContent>
               </Card>
+
+              {visionAnalytics && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Eye className="w-5 h-5 text-blue-500" />
+                      Computer Vision & Safety Monitoring
+                    </CardTitle>
+                    <CardDescription>
+                      Real-time patient safety monitoring through AI-powered video analytics
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                        <div className="flex items-center gap-3 mb-2">
+                          <AlertTriangle className="w-5 h-5 text-blue-600" />
+                          <h4 className="font-semibold text-blue-900">Fall Detection</h4>
+                        </div>
+                        <div className="text-lg font-bold text-blue-700">{visionAnalytics?.fall_detection?.risk_level || 'Low'}</div>
+                        <div className="text-sm text-blue-600">Confidence: {Math.round((visionAnalytics?.fall_detection?.confidence || 0) * 100)}%</div>
+                        <div className="text-xs text-blue-500 mt-1">{visionAnalytics?.fall_detection?.last_incident || 'No recent incidents'}</div>
+                      </div>
+                      <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
+                        <div className="flex items-center gap-3 mb-2">
+                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <h4 className="font-semibold text-green-900">Bed Exit Monitoring</h4>
+                        </div>
+                        <div className="text-lg font-bold text-green-700">{visionAnalytics?.bed_exit_monitoring?.status || 'Safe'}</div>
+                        <div className="text-sm text-green-600">Alerts Today: {visionAnalytics?.bed_exit_monitoring?.alerts_today || 0}</div>
+                      </div>
+                      <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
+                        <div className="flex items-center gap-3 mb-2">
+                          <Shield className="w-5 h-5 text-purple-600" />
+                          <h4 className="font-semibold text-purple-900">Hand Hygiene</h4>
+                        </div>
+                        <div className="text-lg font-bold text-purple-700">{visionAnalytics?.hand_hygiene_compliance?.compliance_rate || 0}%</div>
+                        <Progress value={visionAnalytics?.hand_hygiene_compliance?.compliance_rate || 0} className="mt-2 h-2" />
+                        <div className="text-xs text-purple-500 mt-1">Violations: {visionAnalytics?.hand_hygiene_compliance?.violations_today || 0}</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
+              {nlpAnalytics && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Brain className="w-5 h-5 text-indigo-500" />
+                      Advanced Natural Language Processing
+                    </CardTitle>
+                    <CardDescription>
+                      AI-powered clinical documentation and medication safety screening
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <h4 className="font-semibold text-gray-800">Clinical Documentation</h4>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center p-3 bg-indigo-50 rounded-lg">
+                            <span className="text-indigo-900 font-medium">Auto-Generated Notes</span>
+                            <span className="text-indigo-700 font-bold">{nlpAnalytics?.clinical_documentation?.auto_generated_notes || 0}</span>
+                          </div>
+                          <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <span className="text-green-900 font-medium">Time Saved</span>
+                            <span className="text-green-700 font-bold">{nlpAnalytics?.clinical_documentation?.time_saved_minutes || 0} min</span>
+                          </div>
+                          <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                            <span className="text-blue-900 font-medium">Transcription Accuracy</span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-blue-700 font-bold">{nlpAnalytics?.clinical_documentation?.transcription_accuracy || 0}%</span>
+                              <Progress value={nlpAnalytics?.clinical_documentation?.transcription_accuracy || 0} className="w-20 h-2" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <h4 className="font-semibold text-gray-800">Medication Safety</h4>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                            <span className="text-red-900 font-medium">Interactions Detected</span>
+                            <span className="text-red-700 font-bold">{nlpAnalytics?.medication_screening?.interactions_detected || 0}</span>
+                          </div>
+                          <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                            <span className="text-orange-900 font-medium">Safety Alerts</span>
+                            <span className="text-orange-700 font-bold">{nlpAnalytics?.medication_screening?.alerts_generated || 0}</span>
+                          </div>
+                          <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <span className="text-green-900 font-medium">Safety Score</span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-green-700 font-bold">{nlpAnalytics?.medication_screening?.safety_score || 0}%</span>
+                              <Progress value={nlpAnalytics?.medication_screening?.safety_score || 0} className="w-20 h-2" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
+              {staffAnalytics && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-teal-500" />
+                      Staff Optimization & Workflow Intelligence
+                    </CardTitle>
+                    <CardDescription>
+                      AI-driven workforce analytics and burnout prevention
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="p-4 bg-gradient-to-br from-teal-50 to-teal-100 rounded-lg border border-teal-200">
+                        <div className="flex items-center gap-3 mb-2">
+                          <TrendingUp className="w-5 h-5 text-teal-600" />
+                          <h4 className="font-semibold text-teal-900">Workload Prediction</h4>
+                        </div>
+                        <div className="text-lg font-bold text-teal-700">{staffAnalytics?.workload_prediction?.current_capacity || 0}%</div>
+                        <div className="text-sm text-teal-600">Current Capacity</div>
+                        <div className="text-xs text-teal-500 mt-1">{staffAnalytics?.workload_prediction?.staffing_recommendation || 'Optimal staffing'}</div>
+                      </div>
+                      <div className="p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg border border-orange-200">
+                        <div className="flex items-center gap-3 mb-2">
+                          <AlertTriangle className="w-5 h-5 text-orange-600" />
+                          <h4 className="font-semibold text-orange-900">Burnout Risk</h4>
+                        </div>
+                        <div className="text-lg font-bold text-orange-700">{staffAnalytics?.burnout_indicators?.stress_level || 'Low'}</div>
+                        <div className="text-sm text-orange-600">Stress Level</div>
+                        <div className="text-xs text-orange-500 mt-1">Break Compliance: {staffAnalytics?.burnout_indicators?.break_compliance || 0}%</div>
+                      </div>
+                      <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
+                        <div className="flex items-center gap-3 mb-2">
+                          <Target className="w-5 h-5 text-purple-600" />
+                          <h4 className="font-semibold text-purple-900">Skill Matching</h4>
+                        </div>
+                        <div className="text-lg font-bold text-purple-700">{staffAnalytics?.skill_matching?.optimal_assignments || 0}</div>
+                        <div className="text-sm text-purple-600">Optimal Assignments</div>
+                        <div className="text-xs text-purple-500 mt-1">Efficiency: +{staffAnalytics?.skill_matching?.efficiency_improvement || 0}%</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </div>
           ) : (
             <Card>
@@ -1187,6 +1371,113 @@ function App() {
                 <Badge variant="outline" className="text-sm">
                   Advanced AI features will appear here after room selection
                 </Badge>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+
+        <TabsContent value="family-portal" className="space-y-6">
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center gap-3">
+              <Users className="w-8 h-8 text-blue-600" />
+              <h2 className="text-3xl font-bold text-gray-900">Family Communication Portal</h2>
+            </div>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Automated family updates and secure communication through Cisco Webex Voice integration
+            </p>
+          </div>
+
+          {familyPortal ? (
+            <div className="grid gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <User className="w-5 h-5 text-blue-500" />
+                    Family Contacts & Preferences
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {familyPortal.family_contacts?.map((contact: any, index: number) => (
+                      <div key={index} className="p-4 bg-blue-50 rounded-lg">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-semibold text-blue-900">{contact.name}</h4>
+                            <p className="text-blue-700 text-sm">{contact.relationship}</p>
+                            <p className="text-blue-600 text-xs">{contact.phone}</p>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-xs border border-blue-300 bg-blue-100 text-blue-800 px-2 py-1 rounded">{contact.preferred_contact_method}</div>
+                            <p className="text-blue-500 text-xs mt-1">{contact.update_frequency}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Volume2 className="w-5 h-5 text-green-500" />
+                    Communication Log & Automated Updates
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {familyPortal.communication_log?.map((log: any, index: number) => (
+                      <div key={index} className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <p className="text-green-900 text-sm">{log.content}</p>
+                            <p className="text-green-600 text-xs mt-1">{new Date(log.timestamp).toLocaleString()}</p>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-xs border border-gray-300 bg-gray-100 text-gray-800 px-2 py-1 rounded">{log.delivery_method}</div>
+                            <p className="text-green-500 text-xs mt-1">{log.read_status}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Brain className="w-5 h-5 text-purple-500" />
+                    Emotional Analysis & Communication Insights
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 bg-purple-50 rounded-lg">
+                      <h4 className="font-semibold text-purple-900 mb-2">Family Sentiment</h4>
+                      <p className="text-purple-700 capitalize">{familyPortal.emotional_analysis?.family_sentiment || 'Neutral'}</p>
+                      <p className="text-purple-600 text-sm mt-1">Recommended tone: {familyPortal.emotional_analysis?.recommended_communication_tone || 'Professional'}</p>
+                    </div>
+                    <div className="p-4 bg-indigo-50 rounded-lg">
+                      <h4 className="font-semibold text-indigo-900 mb-2">Key Concerns</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {familyPortal.emotional_analysis?.key_concerns?.map((concern: string, index: number) => (
+                          <div key={index} className="text-xs border border-indigo-300 bg-indigo-100 text-indigo-800 px-2 py-1 rounded">{concern}</div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="text-center py-12">
+                <Users className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-700 mb-2">Family Portal Ready</h3>
+                <p className="text-gray-500 mb-4">
+                  Select a room and trigger context to view family communication features
+                </p>
               </CardContent>
             </Card>
           )}
