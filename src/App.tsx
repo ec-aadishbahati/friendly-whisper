@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
-import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, Zap, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu, Users, Thermometer, Camera, Monitor, ShieldCheck } from 'lucide-react'
+import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu, Users, Thermometer, Camera, Monitor, ShieldCheck } from 'lucide-react'
 import './App.css'
 
 interface PatientContext {
@@ -382,14 +382,14 @@ function App() {
         </div>
       )}
 
-      {/* Network Flow Steps */}
-      <div className="mt-6 space-y-2 max-h-48 overflow-y-auto">
+      {/* Network Flow Steps - Compact Grid Layout */}
+      <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-1 max-h-none overflow-visible">
         {networkFlow.map((step, index) => (
-          <div key={index} className="flex items-center space-x-3 text-sm">
-            <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-xs font-bold">
+          <div key={index} className="flex items-center space-x-2 text-xs">
+            <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-xs font-bold flex-shrink-0">
               {index + 1}
             </div>
-            <span className="text-green-300">{step}</span>
+            <span className="text-green-300 leading-tight">{step}</span>
           </div>
         ))}
       </div>
