@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
-import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, Zap, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu, Users, Thermometer, Camera, Search, Monitor, ShieldCheck } from 'lucide-react'
+import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, Zap, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu, Users, Thermometer, Camera, Monitor, ShieldCheck } from 'lucide-react'
 import './App.css'
 
 interface PatientContext {
@@ -108,11 +108,17 @@ function App() {
   const simulateNetworkFlow = () => {
     const steps = [
       'DNA Spaces detects staff badge entering room',
-      'ISE authenticates staff identity and permissions',
-      'EHR system queried for patient medical records',
+      'SecureX validates threat posture and device compliance',
+      'ISE authenticates staff identity with continuous risk scoring',
+      'Cyber Vision monitors medical device security status',
+      'ThousandEyes ensures optimal network path to EHR',
+      'EHR system queried for patient medical records via FHIR',
+      'Meraki MT sensors provide environmental context data',
       'UCS X-Series processes AI inference locally (<67ms)',
-      'AI generates contextual patient summary',
-      'Webex Voice API delivers context to staff headset'
+      'AppDynamics monitors AI processing performance',
+      'Meraki MV cameras validate staff presence and safety',
+      'AI generates contextual patient summary with compliance check',
+      'Webex Voice API delivers secure context to staff headset'
     ]
     
     setNetworkFlow([])
@@ -122,7 +128,7 @@ function App() {
       setTimeout(() => {
         setNetworkFlow(prev => [...prev, step])
         setActiveStep(index + 1)
-      }, index * 800)
+      }, index * 500)
     })
   }
 
@@ -214,105 +220,178 @@ function App() {
 
   const CiscoNetworkDiagram = () => (
     <div className="relative bg-gradient-to-br from-gray-900 to-blue-900 p-6 rounded-lg text-white">
-      <h3 className="text-lg font-semibold mb-4 text-center">Cisco Network Infrastructure</h3>
+      <h3 className="text-lg font-semibold mb-4 text-center">Comprehensive Cisco Network Flow</h3>
       
-      {/* Network Nodes */}
-      <div className="grid grid-cols-4 gap-6 items-center">
+      {/* Primary Layer - Core Infrastructure */}
+      <div className="grid grid-cols-6 gap-3 items-center mb-6">
         {/* DNA Spaces */}
         <div className="text-center">
-          <div className={`w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center transition-all duration-500 ${
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
             activeStep >= 1 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
           }`}>
-            <Wifi className="w-8 h-8" />
+            <Wifi className="w-6 h-6" />
           </div>
-          <p className="text-sm font-medium">DNA Spaces</p>
-          <p className="text-xs text-gray-300">Location Services</p>
+          <p className="text-xs font-medium">DNA Spaces</p>
+        </div>
+
+        {/* SecureX */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 2 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <ShieldCheck className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">SecureX</p>
         </div>
 
         {/* ISE */}
         <div className="text-center">
-          <div className={`w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center transition-all duration-500 ${
-            activeStep >= 2 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 3 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
           }`}>
-            <Shield className="w-8 h-8" />
+            <Shield className="w-6 h-6" />
           </div>
-          <p className="text-sm font-medium">ISE</p>
-          <p className="text-xs text-gray-300">Identity Services</p>
+          <p className="text-xs font-medium">ISE</p>
+        </div>
+
+        {/* Cyber Vision */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 4 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Eye className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">Cyber Vision</p>
+        </div>
+
+        {/* ThousandEyes */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 5 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Network className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">ThousandEyes</p>
+        </div>
+
+        {/* EHR */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 6 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Database className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">EHR FHIR</p>
+        </div>
+      </div>
+
+      {/* Secondary Layer - Processing & Delivery */}
+      <div className="grid grid-cols-6 gap-3 items-center mb-6">
+        {/* Meraki MT */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 7 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Thermometer className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">Meraki MT</p>
         </div>
 
         {/* UCS X-Series */}
         <div className="text-center">
-          <div className={`w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center transition-all duration-500 ${
-            activeStep >= 4 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 8 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
           }`}>
-            <Cpu className="w-8 h-8" />
+            <Cpu className="w-6 h-6" />
           </div>
-          <p className="text-sm font-medium">UCS X-Series</p>
-          <p className="text-xs text-gray-300">Edge AI</p>
+          <p className="text-xs font-medium">UCS X-Series</p>
+        </div>
+
+        {/* AppDynamics */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 9 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Monitor className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">AppDynamics</p>
+        </div>
+
+        {/* Meraki MV */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 10 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Camera className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">Meraki MV</p>
+        </div>
+
+        {/* AI Engine */}
+        <div className="text-center">
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 11 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Brain className="w-6 h-6" />
+          </div>
+          <p className="text-xs font-medium">AI Engine</p>
         </div>
 
         {/* Webex Voice */}
         <div className="text-center">
-          <div className={`w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center transition-all duration-500 ${
-            activeStep >= 6 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          <div className={`w-12 h-12 mx-auto mb-1 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 12 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
           }`}>
-            <Headphones className="w-8 h-8" />
+            <Headphones className="w-6 h-6" />
           </div>
-          <p className="text-sm font-medium">Webex Voice</p>
-          <p className="text-xs text-gray-300">Audio Delivery</p>
+          <p className="text-xs font-medium">Webex Voice</p>
         </div>
       </div>
 
-      {/* Data Flow Lines */}
-      <div className="mt-8 space-y-2">
-        {networkFlow.map((step, index) => (
-          <div key={index} className="flex items-center gap-3 text-sm">
-            <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-            <span className="text-green-300">{step}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Observability Metrics Overlay */}
+      {/* Connection Lines */}
+      <div className="absolute top-24 left-8 right-8 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"></div>
+      <div className="absolute top-40 left-8 right-8 h-0.5 bg-gradient-to-r from-purple-400 to-green-400"></div>
+      
+      {/* Real-Time Cisco Analytics Dashboard */}
       {networkFlow.length > 0 && aiAnalytics && (
-        <div className="mt-6 grid grid-cols-2 gap-4">
+        <div className="mt-6 grid grid-cols-3 gap-3">
           <div className="bg-blue-900/50 p-3 rounded border border-blue-400">
-            <h4 className="text-sm font-medium text-blue-200 mb-2">ThousandEyes Network Intelligence</h4>
+            <h4 className="text-sm font-medium text-blue-200 mb-2">Security & Compliance</h4>
             <div className="space-y-1 text-xs text-blue-100">
-              <div>API Latency: {aiAnalytics.thousandeyes_observability?.api_latency_ms}ms</div>
-              <div>EHR Availability: {aiAnalytics.thousandeyes_observability?.ehr_api_availability}%</div>
-              <div>Voice Jitter: {aiAnalytics.thousandeyes_observability?.webex_voice_jitter}ms</div>
+              <div>SecureX Threat Score: {aiAnalytics.securex_integration?.threat_investigation_score}%</div>
+              <div>Identity Risk: {aiAnalytics.identity_intelligence?.continuous_risk_score}%</div>
+              <div>Device Security: {aiAnalytics.cyber_vision?.medical_device_risk_score}%</div>
             </div>
           </div>
           <div className="bg-purple-900/50 p-3 rounded border border-purple-400">
-            <h4 className="text-sm font-medium text-purple-200 mb-2">AppDynamics Performance</h4>
+            <h4 className="text-sm font-medium text-purple-200 mb-2">Performance & Observability</h4>
             <div className="space-y-1 text-xs text-purple-100">
+              <div>Network Latency: {aiAnalytics.thousandeyes_observability?.api_latency_ms}ms</div>
               <div>App Health: {aiAnalytics.appdynamics_observability?.application_health_score}%</div>
-              <div>AI Processing: {aiAnalytics.appdynamics_observability?.ai_processing_time_ms}ms</div>
-              <div>DB Response: {aiAnalytics.appdynamics_observability?.database_response_time}ms</div>
+              <div>AI Processing: {aiAnalytics.ucs_edge_ai?.ai_inference_latency_ms}ms</div>
+            </div>
+          </div>
+          <div className="bg-green-900/50 p-3 rounded border border-green-400">
+            <h4 className="text-sm font-medium text-green-200 mb-2">Environmental & Vision</h4>
+            <div className="space-y-1 text-xs text-green-100">
+              <div>Room Temp: {aiAnalytics.meraki_environmental?.room_temperature_f}°F</div>
+              <div>Fall Detection: {aiAnalytics.meraki_computer_vision?.fall_detection_confidence}%</div>
+              <div>Compliance: {aiAnalytics.compliance_reporting?.hipaa_compliance_score}%</div>
             </div>
           </div>
         </div>
       )}
 
-      {/* EHR Integration */}
-      <div className="absolute top-6 right-6">
-        <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
-          activeStep >= 3 ? 'bg-blue-500 shadow-lg shadow-blue-500/50' : 'bg-gray-600'
-        }`}>
-          <Database className="w-6 h-6" />
-        </div>
-        <p className="text-xs text-center mt-1">EHR</p>
-      </div>
-
-      {/* AI Processing */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-        <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
-          activeStep >= 5 ? 'bg-purple-500 shadow-lg shadow-purple-500/50' : 'bg-gray-600'
-        }`}>
-          <Zap className="w-6 h-6" />
-        </div>
-        <p className="text-xs text-center mt-1">AI Engine</p>
+      {/* Network Flow Steps */}
+      <div className="mt-6 space-y-2 max-h-48 overflow-y-auto">
+        {networkFlow.map((step, index) => (
+          <div key={index} className="flex items-center space-x-3 text-sm">
+            <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-xs font-bold">
+              {index + 1}
+            </div>
+            <span className="text-green-300">{step}</span>
+          </div>
+        ))}
       </div>
     </div>
   )
