@@ -439,6 +439,69 @@ function App() {
               </div>
             </div>
 
+            {/* Security & Observability Layer */}
+            <div className="border-t pt-6 mb-8">
+              <h4 className="font-semibold text-lg mb-4 text-gray-800 text-center">Security & Observability Layer</h4>
+              <div className="grid grid-cols-4 gap-4">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-red-600 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                    <ShieldCheck className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-sm font-medium">SecureX</p>
+                  <p className="text-xs text-gray-600">SOC Integration</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-orange-600 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                    <Eye className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-sm font-medium">Cyber Vision</p>
+                  <p className="text-xs text-gray-600">OT/IoT Security</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                    <Network className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-sm font-medium">ThousandEyes</p>
+                  <p className="text-xs text-gray-600">Network Intelligence</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                    <Monitor className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-sm font-medium">AppDynamics</p>
+                  <p className="text-xs text-gray-600">App Performance</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Edge Computing & Environmental Layer */}
+            <div className="border-t pt-6 mb-8">
+              <h4 className="font-semibold text-lg mb-4 text-gray-800 text-center">Edge Computing & Environmental Layer</h4>
+              <div className="grid grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                    <Cpu className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-sm font-medium">UCS X-Series</p>
+                  <p className="text-xs text-gray-600">Edge AI Processing</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                    <Thermometer className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-sm font-medium">Meraki MT</p>
+                  <p className="text-xs text-gray-600">Environmental Sensors</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-teal-600 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                    <Camera className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-sm font-medium">Meraki MV</p>
+                  <p className="text-xs text-gray-600">Computer Vision</p>
+                </div>
+              </div>
+            </div>
+
             {/* Access Layer */}
             <div className="border-t pt-6">
               <h4 className="font-semibold text-lg mb-4 text-gray-800 text-center">Access Layer - Patient Rooms</h4>
@@ -464,6 +527,14 @@ function App() {
                       <div className="flex items-center gap-2 text-xs">
                         <Lock className="w-3 h-3 text-red-500" />
                         <span>802.1X Auth</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs">
+                        <Thermometer className="w-3 h-3 text-green-600" />
+                        <span>MT Sensors</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs">
+                        <Camera className="w-3 h-3 text-teal-600" />
+                        <span>MV Cameras</span>
                       </div>
                     </div>
                   </div>
@@ -522,11 +593,48 @@ function App() {
               </div>
             </div>
 
-            {/* Step 2: Identity Verification */}
-            <div className="flex items-start gap-4 p-4 bg-green-50 rounded-lg">
-              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+            {/* Step 2: SecureX Threat Validation */}
+            <div className="flex items-start gap-4 p-4 bg-red-50 rounded-lg">
+              <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
               <div className="flex-1">
-                <h4 className="font-semibold text-green-800 mb-2">Identity Verification & Authorization</h4>
+                <h4 className="font-semibold text-red-800 mb-2">SecureX Threat Validation</h4>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-gray-700">Threat Intelligence</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Real-time threat feeds</li>
+                      <li>• Device posture assessment</li>
+                      <li>• Behavioral analysis</li>
+                      <li>• Risk scoring</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">SOC Integration</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Automated response</li>
+                      <li>• Incident correlation</li>
+                      <li>• Security orchestration</li>
+                      <li>• Threat hunting</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Compliance Validation</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Device compliance</li>
+                      <li>• Policy enforcement</li>
+                      <li>• Audit trail</li>
+                      <li>• Risk mitigation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3: Identity Verification */}
+            <div className="flex items-start gap-4 p-4 bg-green-50 rounded-lg">
+              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-green-800 mb-2">ISE Identity Verification & Authorization</h4>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div>
                     <p className="font-medium text-gray-700">ISE Policy Engine</p>
@@ -538,12 +646,12 @@ function App() {
                     </ul>
                   </div>
                   <div>
-                    <p className="font-medium text-gray-700">Active Directory</p>
+                    <p className="font-medium text-gray-700">Identity Intelligence</p>
                     <ul className="text-gray-600 text-xs mt-1 space-y-1">
-                      <li>• LDAP integration</li>
-                      <li>• Group membership</li>
-                      <li>• Permission matrix</li>
-                      <li>• Audit logging</li>
+                      <li>• Continuous risk scoring</li>
+                      <li>• Anomaly detection</li>
+                      <li>• Behavioral analytics</li>
+                      <li>• Risk-based policies</li>
                     </ul>
                   </div>
                   <div>
@@ -559,9 +667,83 @@ function App() {
               </div>
             </div>
 
-            {/* Step 3: EHR Data Retrieval */}
+            {/* Step 4: Cyber Vision Device Monitoring */}
+            <div className="flex items-start gap-4 p-4 bg-orange-50 rounded-lg">
+              <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-orange-800 mb-2">Cyber Vision Medical Device Security</h4>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-gray-700">OT Network Visibility</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Medical device discovery</li>
+                      <li>• Asset inventory</li>
+                      <li>• Protocol monitoring</li>
+                      <li>• Network segmentation</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Risk Assessment</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Vulnerability scanning</li>
+                      <li>• Risk scoring</li>
+                      <li>• Threat detection</li>
+                      <li>• Compliance monitoring</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Industrial Security</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• OT protocol analysis</li>
+                      <li>• Anomaly detection</li>
+                      <li>• Security policies</li>
+                      <li>• Incident response</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 5: ThousandEyes Network Optimization */}
+            <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">5</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-blue-800 mb-2">ThousandEyes Network Path Optimization</h4>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-gray-700">Network Intelligence</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• End-to-end visibility</li>
+                      <li>• Path visualization</li>
+                      <li>• Performance monitoring</li>
+                      <li>• Real-time analytics</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">API Monitoring</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• EHR API latency</li>
+                      <li>• Availability tracking</li>
+                      <li>• Performance baselines</li>
+                      <li>• SLA monitoring</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Voice Quality</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Webex Voice jitter</li>
+                      <li>• Packet loss detection</li>
+                      <li>• Quality metrics</li>
+                      <li>• Optimization alerts</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 6: EHR Data Retrieval */}
             <div className="flex items-start gap-4 p-4 bg-purple-50 rounded-lg">
-              <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+              <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">6</div>
               <div className="flex-1">
                 <h4 className="font-semibold text-purple-800 mb-2">EHR Data Retrieval & Processing</h4>
                 <div className="grid grid-cols-3 gap-4 text-sm">
@@ -596,11 +778,159 @@ function App() {
               </div>
             </div>
 
-            {/* Step 4: AI Processing */}
-            <div className="flex items-start gap-4 p-4 bg-orange-50 rounded-lg">
-              <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
+            {/* Step 7: Meraki Environmental Monitoring */}
+            <div className="flex items-start gap-4 p-4 bg-green-50 rounded-lg">
+              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">7</div>
               <div className="flex-1">
-                <h4 className="font-semibold text-orange-800 mb-2">AI Context Generation</h4>
+                <h4 className="font-semibold text-green-800 mb-2">Meraki MT Environmental Context</h4>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-gray-700">Environmental Sensors</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Temperature monitoring</li>
+                      <li>• Humidity tracking</li>
+                      <li>• Air quality index</li>
+                      <li>• Occupancy detection</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Infection Control</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Environmental alerts</li>
+                      <li>• Safety thresholds</li>
+                      <li>• Compliance monitoring</li>
+                      <li>• Risk assessment</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Data Integration</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Real-time streaming</li>
+                      <li>• Context enrichment</li>
+                      <li>• Trend analysis</li>
+                      <li>• Predictive insights</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 8: UCS X-Series Edge AI Processing */}
+            <div className="flex items-start gap-4 p-4 bg-indigo-50 rounded-lg">
+              <div className="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-sm">8</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-indigo-800 mb-2">UCS X-Series Edge AI Processing</h4>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-gray-700">Edge Computing</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Local AI inference</li>
+                      <li>• &lt;67ms latency</li>
+                      <li>• GPU acceleration</li>
+                      <li>• Real-time processing</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">AI Models</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Medical NLP models</li>
+                      <li>• Context generation</li>
+                      <li>• Risk assessment</li>
+                      <li>• Priority scoring</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Performance</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• High availability</li>
+                      <li>• Load balancing</li>
+                      <li>• Auto-scaling</li>
+                      <li>• Cloud sync</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 9: AppDynamics Performance Monitoring */}
+            <div className="flex items-start gap-4 p-4 bg-purple-50 rounded-lg">
+              <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">9</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-purple-800 mb-2">AppDynamics AI Processing Monitoring</h4>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-gray-700">Application Performance</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• AI processing metrics</li>
+                      <li>• Response time tracking</li>
+                      <li>• Throughput analysis</li>
+                      <li>• Error rate monitoring</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Microservices</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Service health</li>
+                      <li>• Dependency mapping</li>
+                      <li>• Transaction tracing</li>
+                      <li>• Performance baselines</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Observability</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Real-time dashboards</li>
+                      <li>• Anomaly detection</li>
+                      <li>• Performance alerts</li>
+                      <li>• Root cause analysis</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 10: Meraki Computer Vision */}
+            <div className="flex items-start gap-4 p-4 bg-teal-50 rounded-lg">
+              <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm">10</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-teal-800 mb-2">Meraki MV Computer Vision Analytics</h4>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="font-medium text-gray-700">Patient Safety</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Fall detection</li>
+                      <li>• Movement tracking</li>
+                      <li>• Safety alerts</li>
+                      <li>• Emergency response</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">Compliance Monitoring</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Hand hygiene compliance</li>
+                      <li>• PPE monitoring</li>
+                      <li>• Staff presence validation</li>
+                      <li>• Protocol adherence</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-700">AI Analytics</p>
+                    <ul className="text-gray-600 text-xs mt-1 space-y-1">
+                      <li>• Computer vision models</li>
+                      <li>• Behavioral analysis</li>
+                      <li>• Pattern recognition</li>
+                      <li>• Predictive insights</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 11: AI Context Generation */}
+            <div className="flex items-start gap-4 p-4 bg-orange-50 rounded-lg">
+              <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">11</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-orange-800 mb-2">AI Context Generation & Compliance Check</h4>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div>
                     <p className="font-medium text-gray-700">Natural Language Processing</p>
@@ -612,12 +942,12 @@ function App() {
                     </ul>
                   </div>
                   <div>
-                    <p className="font-medium text-gray-700">Machine Learning</p>
+                    <p className="font-medium text-gray-700">Compliance Integration</p>
                     <ul className="text-gray-600 text-xs mt-1 space-y-1">
-                      <li>• Pattern recognition</li>
+                      <li>• HIPAA compliance check</li>
+                      <li>• Audit trail generation</li>
+                      <li>• Policy validation</li>
                       <li>• Risk assessment</li>
-                      <li>• Personalization</li>
-                      <li>• Continuous learning</li>
                     </ul>
                   </div>
                   <div>
@@ -633,11 +963,11 @@ function App() {
               </div>
             </div>
 
-            {/* Step 5: Voice Delivery */}
-            <div className="flex items-start gap-4 p-4 bg-indigo-50 rounded-lg">
-              <div className="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-sm">5</div>
+            {/* Step 12: Webex Voice Delivery */}
+            <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">12</div>
               <div className="flex-1">
-                <h4 className="font-semibold text-indigo-800 mb-2">Secure Voice Delivery</h4>
+                <h4 className="font-semibold text-blue-800 mb-2">Webex Voice Secure Context Delivery</h4>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div>
                     <p className="font-medium text-gray-700">Webex Voice API</p>
@@ -692,7 +1022,11 @@ function App() {
                   <span className="font-medium">1 Gbps minimum</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Latency (end-to-end):</span>
+                  <span className="text-gray-600">AI Inference Latency:</span>
+                  <span className="font-medium">&lt; 67ms (UCS X-Series)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">End-to-end Latency:</span>
                   <span className="font-medium">&lt; 500ms</span>
                 </div>
                 <div className="flex justify-between">
@@ -722,7 +1056,15 @@ function App() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">HIPAA compliance:</span>
-                  <span className="font-medium">Full compliance</span>
+                  <span className="font-medium">98% (SecureX + Compliance)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Threat Detection:</span>
+                  <span className="font-medium">SecureX + Cyber Vision</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Observability:</span>
+                  <span className="font-medium">ThousandEyes + AppDynamics</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Audit logging:</span>
