@@ -846,9 +846,64 @@ function App() {
                       </div>
                     </div>
                   </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-cyan-50 rounded-lg">
+                    <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold">5</div>
+                    <div>
+                      <h4 className="font-semibold text-cyan-900">Edge AI Processing</h4>
+                      <p className="text-cyan-700 text-sm">UCS X-Series edge nodes provide low-latency AI inference locally for real-time healthcare decisions with &lt;100ms response time.</p>
+                      <div className="mt-2 text-xs text-cyan-600">
+                        <strong>Technical:</strong> Local compute, edge AI models, 67ms inference latency, cloud sync
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-emerald-50 rounded-lg">
+                    <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold">6</div>
+                    <div>
+                      <h4 className="font-semibold text-emerald-900">Environmental & Computer Vision</h4>
+                      <p className="text-emerald-700 text-sm">Meraki MT sensors monitor environmental conditions while MV cameras provide fall detection and hand hygiene compliance monitoring.</p>
+                      <div className="mt-2 text-xs text-emerald-600">
+                        <strong>Technical:</strong> Environmental sensors, computer vision AI, 94% fall detection confidence
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
+                  <h4 className="font-semibold text-gray-900 mb-3">Enhanced Cisco Architecture</h4>
+                  <div className="grid md:grid-cols-3 gap-4 text-sm">
+                    <div>
+                      <h5 className="font-medium text-blue-900 mb-2">Observability Layer</h5>
+                      <ul className="text-blue-700 space-y-1">
+                        <li>• ThousandEyes network intelligence</li>
+                        <li>• AppDynamics application monitoring</li>
+                        <li>• Real-time performance analytics</li>
+                        <li>• End-to-end visibility</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="font-medium text-purple-900 mb-2">Security & Compliance</h5>
+                      <ul className="text-purple-700 space-y-1">
+                        <li>• SecureX SOC integration</li>
+                        <li>• Identity Intelligence continuous risk</li>
+                        <li>• Cyber Vision OT/IoT security</li>
+                        <li>• Automated compliance reporting</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="font-medium text-green-900 mb-2">Edge & Environmental</h5>
+                      <ul className="text-green-700 space-y-1">
+                        <li>• UCS X-Series edge AI processing</li>
+                        <li>• Meraki MT environmental sensors</li>
+                        <li>• Meraki MV computer vision</li>
+                        <li>• Real-time patient safety monitoring</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid md:grid-cols-3 gap-6">
                   <div className="p-4 bg-gray-50 rounded-lg">
                     <h4 className="font-semibold text-gray-900 mb-3">Business Impact</h4>
                     <div className="space-y-3 text-sm">
@@ -889,6 +944,28 @@ function App() {
                       <div className="flex justify-between">
                         <span className="text-gray-600">Location accuracy:</span>
                         <span className="font-bold text-orange-600">&lt; 1 meter</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-emerald-50 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 mb-3">Enhanced Capabilities</h4>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">AI inference latency:</span>
+                        <span className="font-bold text-cyan-600">&lt; 67ms</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">HIPAA compliance:</span>
+                        <span className="font-bold text-emerald-600">98% score</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Fall detection accuracy:</span>
+                        <span className="font-bold text-red-600">94%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Environmental monitoring:</span>
+                        <span className="font-bold text-blue-600">Real-time</span>
                       </div>
                     </div>
                   </div>
@@ -1144,10 +1221,10 @@ function App() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Cpu className="w-5 h-5 text-teal-500" />
-                      IoT Sensor Fusion
+                      IoT Sensor Fusion with Cyber Vision
                     </CardTitle>
                     <CardDescription>
-                      Connected medical device analytics and optimization
+                      Connected medical device analytics and OT security visibility
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -1164,20 +1241,281 @@ function App() {
                         </div>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
-                        <span className="text-orange-900 font-medium">Predictive Maintenance</span>
-                        <span className="text-orange-700 font-bold">{aiAnalytics.iot_sensor_fusion?.predictive_maintenance_alerts || 0} alerts</span>
+                        <span className="text-orange-900 font-medium">Medical Device Risk Score</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-orange-700 font-bold">{aiAnalytics.cyber_vision?.medical_device_risk_score || 0}%</span>
+                          <Progress value={aiAnalytics.cyber_vision?.medical_device_risk_score || 0} className="w-20 h-2" />
+                        </div>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                        <span className="text-green-900 font-medium">Bandwidth Optimization</span>
+                        <span className="text-green-900 font-medium">OT Network Visibility</span>
                         <div className="flex items-center gap-2">
-                          <span className="text-green-700 font-bold">{aiAnalytics.iot_sensor_fusion?.bandwidth_optimization || 0}%</span>
-                          <Progress value={aiAnalytics.iot_sensor_fusion?.bandwidth_optimization || 0} className="w-20 h-2" />
+                          <span className="text-green-700 font-bold">{aiAnalytics.cyber_vision?.ot_network_visibility || 0}%</span>
+                          <Progress value={aiAnalytics.cyber_vision?.ot_network_visibility || 0} className="w-20 h-2" />
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               </div>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-cyan-500" />
+                    Observability & Performance Monitoring
+                  </CardTitle>
+                  <CardDescription>
+                    ThousandEyes & AppDynamics real-time application and network observability
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-semibold mb-3 text-cyan-900">ThousandEyes Network Intelligence</h4>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center p-3 bg-cyan-50 rounded-lg">
+                          <span className="text-cyan-900 font-medium">API Latency</span>
+                          <span className="text-cyan-700 font-bold">{aiAnalytics.thousandeyes_observability?.api_latency_ms || 0}ms</span>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                          <span className="text-blue-900 font-medium">EHR API Availability</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-blue-700 font-bold">{aiAnalytics.thousandeyes_observability?.ehr_api_availability || 0}%</span>
+                            <Progress value={aiAnalytics.thousandeyes_observability?.ehr_api_availability || 0} className="w-20 h-2" />
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                          <span className="text-purple-900 font-medium">Webex Voice Jitter</span>
+                          <span className="text-purple-700 font-bold">{aiAnalytics.thousandeyes_observability?.webex_voice_jitter || 0}ms</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-3 text-indigo-900">AppDynamics Application Performance</h4>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center p-3 bg-indigo-50 rounded-lg">
+                          <span className="text-indigo-900 font-medium">Application Health</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-indigo-700 font-bold">{aiAnalytics.appdynamics_observability?.application_health_score || 0}%</span>
+                            <Progress value={aiAnalytics.appdynamics_observability?.application_health_score || 0} className="w-20 h-2" />
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="text-green-900 font-medium">AI Processing Time</span>
+                          <span className="text-green-700 font-bold">{aiAnalytics.appdynamics_observability?.ai_processing_time_ms || 0}ms</span>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                          <span className="text-orange-900 font-medium">Microservices Performance</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-orange-700 font-bold">{aiAnalytics.appdynamics_observability?.microservices_performance || 0}%</span>
+                            <Progress value={aiAnalytics.appdynamics_observability?.microservices_performance || 0} className="w-20 h-2" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Shield className="w-5 h-5 text-red-600" />
+                      Enhanced Security & Threat Intelligence
+                    </CardTitle>
+                    <CardDescription>
+                      SecureX integration with Identity Intelligence for comprehensive security posture
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <h5 className="font-semibold text-red-900 mb-2">SecureX SOC Integration</h5>
+                        <div className="grid grid-cols-2 gap-3 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-red-700">Threat Investigation Score</span>
+                            <span className="font-bold text-red-800">{aiAnalytics.securex_integration?.threat_investigation_score || 0}%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-red-700">Security Incidents Today</span>
+                            <span className="font-bold text-red-800">{aiAnalytics.securex_integration?.security_incidents_today || 0}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h5 className="font-semibold text-blue-900 mb-2">Identity Intelligence</h5>
+                        <div className="grid grid-cols-2 gap-3 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-blue-700">Continuous Risk Score</span>
+                            <span className="font-bold text-blue-800">{aiAnalytics.identity_intelligence?.continuous_risk_score || 0}%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-blue-700">Identity Posture</span>
+                            <span className="font-bold text-blue-800">{aiAnalytics.identity_intelligence?.identity_posture_rating || 'Good'}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Server className="w-5 h-5 text-gray-600" />
+                      UCS X-Series Edge AI Processing
+                    </CardTitle>
+                    <CardDescription>
+                      Low-latency AI inference at the network edge for real-time healthcare decisions
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <span className="text-gray-900 font-medium">AI Inference Latency</span>
+                        <span className="text-gray-700 font-bold">{aiAnalytics.ucs_edge_ai?.ai_inference_latency_ms || 0}ms</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                        <span className="text-blue-900 font-medium">Edge Processing Load</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-700 font-bold">{aiAnalytics.ucs_edge_ai?.edge_processing_load || 0}%</span>
+                          <Progress value={aiAnalytics.ucs_edge_ai?.edge_processing_load || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                        <span className="text-green-900 font-medium">Model Accuracy Score</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-green-700 font-bold">{aiAnalytics.ucs_edge_ai?.model_accuracy_score || 0}%</span>
+                          <Progress value={aiAnalytics.ucs_edge_ai?.model_accuracy_score || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                        <span className="text-purple-900 font-medium">Local Compute Utilization</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-purple-700 font-bold">{aiAnalytics.ucs_edge_ai?.local_compute_utilization || 0}%</span>
+                          <Progress value={aiAnalytics.ucs_edge_ai?.local_compute_utilization || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Cloud className="w-5 h-5 text-green-600" />
+                      Meraki Environmental Monitoring
+                    </CardTitle>
+                    <CardDescription>
+                      MT sensors for infection control and patient safety through environmental analytics
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                        <span className="text-blue-900 font-medium">Room Temperature</span>
+                        <span className="text-blue-700 font-bold">{aiAnalytics.meraki_environmental?.room_temperature_f || 0}°F</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-cyan-50 rounded-lg">
+                        <span className="text-cyan-900 font-medium">Humidity Level</span>
+                        <span className="text-cyan-700 font-bold">{aiAnalytics.meraki_environmental?.humidity_percent || 0}%</span>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                        <span className="text-green-900 font-medium">Air Quality Index</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-green-700 font-bold">{aiAnalytics.meraki_environmental?.air_quality_index || 0}</span>
+                          <Progress value={aiAnalytics.meraki_environmental?.air_quality_index || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                        <span className="text-purple-900 font-medium">Occupancy Count</span>
+                        <span className="text-purple-700 font-bold">{aiAnalytics.meraki_environmental?.occupancy_count || 0} people</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Eye className="w-5 h-5 text-indigo-600" />
+                      Meraki Computer Vision Analytics
+                    </CardTitle>
+                    <CardDescription>
+                      MV cameras for patient fall detection and hand hygiene compliance monitoring
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                        <span className="text-red-900 font-medium">Fall Detection Confidence</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-red-700 font-bold">{aiAnalytics.meraki_computer_vision?.fall_detection_confidence || 0}%</span>
+                          <Progress value={aiAnalytics.meraki_computer_vision?.fall_detection_confidence || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                        <span className="text-green-900 font-medium">Hand Hygiene Compliance</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-green-700 font-bold">{aiAnalytics.meraki_computer_vision?.hand_hygiene_compliance || 0}%</span>
+                          <Progress value={aiAnalytics.meraki_computer_vision?.hand_hygiene_compliance || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                        <span className="text-blue-900 font-medium">PPE Compliance Rate</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-700 font-bold">{aiAnalytics.meraki_computer_vision?.ppe_compliance_rate || 0}%</span>
+                          <Progress value={aiAnalytics.meraki_computer_vision?.ppe_compliance_rate || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                        <span className="text-purple-900 font-medium">CV Model Accuracy</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-purple-700 font-bold">{aiAnalytics.meraki_computer_vision?.cv_model_accuracy || 0}%</span>
+                          <Progress value={aiAnalytics.meraki_computer_vision?.cv_model_accuracy || 0} className="w-20 h-2" />
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600" />
+                    Automated Compliance Reporting
+                  </CardTitle>
+                  <CardDescription>
+                    SecureX-driven HIPAA, FDA, and HITECH audit readiness with automated report generation
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-4 gap-4">
+                    <div className="text-center p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg border border-emerald-200">
+                      <div className="text-2xl font-bold text-emerald-700">{aiAnalytics.compliance_reporting?.hipaa_compliance_score || 0}%</div>
+                      <div className="text-sm text-emerald-600">HIPAA Compliance</div>
+                      <Progress value={aiAnalytics.compliance_reporting?.hipaa_compliance_score || 0} className="mt-2 h-2" />
+                    </div>
+                    <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                      <div className="text-2xl font-bold text-blue-700">{aiAnalytics.compliance_reporting?.audit_readiness_status || 'Ready'}</div>
+                      <div className="text-sm text-blue-600">Audit Readiness</div>
+                    </div>
+                    <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
+                      <div className="text-2xl font-bold text-green-700">{aiAnalytics.compliance_reporting?.policy_violations_today || 0}</div>
+                      <div className="text-sm text-green-600">Policy Violations Today</div>
+                    </div>
+                    <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
+                      <div className="text-2xl font-bold text-purple-700">{aiAnalytics.compliance_reporting?.automated_reports_generated || 0}</div>
+                      <div className="text-sm text-purple-600">Reports Generated</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
               <Card>
                 <CardHeader>
