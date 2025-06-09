@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
-import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, Zap, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu, Users } from 'lucide-react'
+import { MapPin, User, Clock, AlertTriangle, Wifi, Shield, Database, Headphones, Activity, Network, Zap, CheckCircle, Server, Router, Lock, Eye, Cloud, ArrowRight, Settings, Radio, Brain, TrendingUp, BarChart3, Target, Volume2, Cpu, Users, Thermometer, Camera, Search, Monitor, ShieldCheck } from 'lucide-react'
 import './App.css'
 
 interface PatientContext {
@@ -110,7 +110,8 @@ function App() {
       'DNA Spaces detects staff badge entering room',
       'ISE authenticates staff identity and permissions',
       'EHR system queried for patient medical records',
-      'AI processes patient data and generates summary',
+      'UCS X-Series processes AI inference locally (<67ms)',
+      'AI generates contextual patient summary',
       'Webex Voice API delivers context to staff headset'
     ]
     
@@ -216,7 +217,7 @@ function App() {
       <h3 className="text-lg font-semibold mb-4 text-center">Cisco Network Infrastructure</h3>
       
       {/* Network Nodes */}
-      <div className="grid grid-cols-3 gap-8 items-center">
+      <div className="grid grid-cols-4 gap-6 items-center">
         {/* DNA Spaces */}
         <div className="text-center">
           <div className={`w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center transition-all duration-500 ${
@@ -239,10 +240,21 @@ function App() {
           <p className="text-xs text-gray-300">Identity Services</p>
         </div>
 
+        {/* UCS X-Series */}
+        <div className="text-center">
+          <div className={`w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center transition-all duration-500 ${
+            activeStep >= 4 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+          }`}>
+            <Cpu className="w-8 h-8" />
+          </div>
+          <p className="text-sm font-medium">UCS X-Series</p>
+          <p className="text-xs text-gray-300">Edge AI</p>
+        </div>
+
         {/* Webex Voice */}
         <div className="text-center">
           <div className={`w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center transition-all duration-500 ${
-            activeStep >= 5 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+            activeStep >= 6 ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
           }`}>
             <Headphones className="w-8 h-8" />
           </div>
@@ -261,6 +273,28 @@ function App() {
         ))}
       </div>
 
+      {/* Observability Metrics Overlay */}
+      {networkFlow.length > 0 && aiAnalytics && (
+        <div className="mt-6 grid grid-cols-2 gap-4">
+          <div className="bg-blue-900/50 p-3 rounded border border-blue-400">
+            <h4 className="text-sm font-medium text-blue-200 mb-2">ThousandEyes Network Intelligence</h4>
+            <div className="space-y-1 text-xs text-blue-100">
+              <div>API Latency: {aiAnalytics.thousandeyes_observability?.api_latency_ms}ms</div>
+              <div>EHR Availability: {aiAnalytics.thousandeyes_observability?.ehr_api_availability}%</div>
+              <div>Voice Jitter: {aiAnalytics.thousandeyes_observability?.webex_voice_jitter}ms</div>
+            </div>
+          </div>
+          <div className="bg-purple-900/50 p-3 rounded border border-purple-400">
+            <h4 className="text-sm font-medium text-purple-200 mb-2">AppDynamics Performance</h4>
+            <div className="space-y-1 text-xs text-purple-100">
+              <div>App Health: {aiAnalytics.appdynamics_observability?.application_health_score}%</div>
+              <div>AI Processing: {aiAnalytics.appdynamics_observability?.ai_processing_time_ms}ms</div>
+              <div>DB Response: {aiAnalytics.appdynamics_observability?.database_response_time}ms</div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* EHR Integration */}
       <div className="absolute top-6 right-6">
         <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
@@ -274,7 +308,7 @@ function App() {
       {/* AI Processing */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
         <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
-          activeStep >= 4 ? 'bg-purple-500 shadow-lg shadow-purple-500/50' : 'bg-gray-600'
+          activeStep >= 5 ? 'bg-purple-500 shadow-lg shadow-purple-500/50' : 'bg-gray-600'
         }`}>
           <Zap className="w-6 h-6" />
         </div>
