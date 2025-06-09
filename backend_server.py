@@ -98,6 +98,69 @@ def get_ai_analytics_data(room_id: str) -> Dict[str, Any]:
             "sensor_data_quality": 95,
             "predictive_maintenance_alerts": 2,
             "bandwidth_optimization": 88
+        },
+        "thousandeyes_observability": {
+            "api_latency_ms": 45,
+            "ehr_api_availability": 99.8,
+            "webex_voice_jitter": 2.1,
+            "ai_inference_latency": 89,
+            "network_path_visualization": "optimal"
+        },
+        "appdynamics_observability": {
+            "application_health_score": 94,
+            "ai_processing_time_ms": 156,
+            "microservices_performance": 92,
+            "database_response_time": 23,
+            "transaction_trace_count": 1247
+        },
+        "securex_integration": {
+            "threat_investigation_score": 98,
+            "security_incidents_today": 0,
+            "automated_response_actions": 3,
+            "threat_intelligence_feeds": 12,
+            "soc_integration_status": "active"
+        },
+        "identity_intelligence": {
+            "continuous_risk_score": 85,
+            "identity_posture_rating": "good",
+            "anomalous_behavior_detected": 1,
+            "risk_based_policies_active": 15,
+            "identity_verification_confidence": 96
+        },
+        "cyber_vision": {
+            "medical_device_risk_score": 78,
+            "ot_network_visibility": 94,
+            "device_vulnerability_count": 2,
+            "asset_discovery_accuracy": 97,
+            "industrial_protocol_monitoring": "active"
+        },
+        "ucs_edge_ai": {
+            "ai_inference_latency_ms": 67,
+            "edge_processing_load": 73,
+            "model_accuracy_score": 94,
+            "local_compute_utilization": 68,
+            "edge_to_cloud_sync": "optimal"
+        },
+        "meraki_environmental": {
+            "room_temperature_f": 72.4,
+            "humidity_percent": 45,
+            "air_quality_index": 89,
+            "occupancy_count": 3,
+            "environmental_alerts": 0
+        },
+        "meraki_computer_vision": {
+            "fall_detection_confidence": 94,
+            "hand_hygiene_compliance": 91,
+            "ppe_compliance_rate": 87,
+            "patient_movement_tracking": "stable",
+            "cv_model_accuracy": 93
+        },
+        "compliance_reporting": {
+            "hipaa_compliance_score": 98,
+            "audit_readiness_status": "compliant",
+            "policy_violations_today": 0,
+            "automated_reports_generated": 5,
+            "compliance_trend": "improving"
         }
     }
 
